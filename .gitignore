@@ -1,0 +1,97 @@
+# Compiled class files
+*.class
+
+# Log files
+*.log
+logs/
+
+# Package Files
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# IDE - IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# IDE - Eclipse
+.classpath
+.project
+.settings/
+.metadata/
+.recommenders/
+
+# IDE - NetBeans
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# IDE - VSCode
+.vscode/
+*.code-workspace
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Application specific
+uploads/
+temp/
+*.pdf
+
+# Database
+*.db
+*.sqlite
+
+# Environment
+.env
+application-*.properties
+*.properties.local
+
+# Wildfly/JBoss
+standalone/data/
+standalone/log/
+standalone/tmp/
+*.cli
+*.sh
+
+# Scripts de déploiement locaux
+compile_et_deployer.sh
+test_*.sh
+configure-*.cli
+setup-*.cli
+
+# Documentation temporaire
+SETUP_*.md
+*_COMPLETE.md
+*_extracted.txt
+
+# Generated files
+generated/
+

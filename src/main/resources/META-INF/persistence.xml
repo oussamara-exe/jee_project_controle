@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+             http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+             version="2.2">
+
+    <!-- Unité de persistance principale -->
+    <persistence-unit name="gestion-rh-pu" transaction-type="JTA">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        
+        <!-- Source de données JNDI -->
+        <jta-data-source>java:jboss/datasources/GestionRHDS</jta-data-source>
+        
+        <!-- Entités JPA -->
+        <class>ma.projet.rh.entities.Employe</class>
+        <class>ma.projet.rh.entities.Departement</class>
+        <class>ma.projet.rh.entities.Poste</class>
+        <class>ma.projet.rh.entities.UserAccount</class>
+        <class>ma.projet.rh.entities.Conge</class>
+        <class>ma.projet.rh.entities.SoldeConge</class>
+        <class>ma.projet.rh.entities.FeuilleTemps</class>
+        <class>ma.projet.rh.entities.FichePaie</class>
+        <class>ma.projet.rh.entities.ActionHistorique</class>
+        <class>ma.projet.rh.entities.Notification</class>
+        
+        <properties>
+            <!-- Configuration Hibernate -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
+            
+            <!-- Stratégie de génération du schéma -->
+            <!-- Options: none, validate, update, create, create-drop -->
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            
+            <!-- Afficher les requêtes SQL dans les logs -->
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            
+            <!-- Afficher les valeurs des paramètres -->
+            <property name="hibernate.use_sql_comments" value="true"/>
+            
+            <!-- Performance -->
+            <property name="hibernate.jdbc.batch_size" value="20"/>
+            <property name="hibernate.order_inserts" value="true"/>
+            <property name="hibernate.order_updates" value="true"/>
+            
+            <!-- Cache de second niveau (optionnel) -->
+            <property name="hibernate.cache.use_second_level_cache" value="false"/>
+            <property name="hibernate.cache.use_query_cache" value="false"/>
+            
+            <!-- Connexion pool -->
+            <property name="hibernate.connection.pool_size" value="10"/>
+            
+            <!-- Encodage UTF-8 -->
+            <property name="hibernate.connection.CharSet" value="utf8"/>
+            <property name="hibernate.connection.characterEncoding" value="utf8"/>
+            <property name="hibernate.connection.useUnicode" value="true"/>
+            
+            <!-- Optimistic locking -->
+            <property name="hibernate.jdbc.use_scrollable_resultset" value="true"/>
+        </properties>
+    </persistence-unit>
+</persistence>
+
