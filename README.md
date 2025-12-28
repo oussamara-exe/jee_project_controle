@@ -365,6 +365,35 @@ Pour toute question ou problème :
 - **Amara Oussama**
 - **Aben Boutaieb Khalil**
 
+## 🚀 Déploiement sur GitHub
+
+### Créer un nouveau dépôt sur GitHub
+
+1. Allez sur [GitHub](https://github.com) et créez un nouveau dépôt
+2. Nommez-le `jee_project_controle` (ou un autre nom de votre choix)
+3. **Ne cochez pas** "Initialize with README" (nous avons déjà un README)
+4. Cliquez sur "Create repository"
+
+### Pousser le code sur GitHub
+
+```bash
+# Ajouter le remote GitHub (remplacez VOTRE_USERNAME par votre nom d'utilisateur GitHub)
+git remote add origin https://github.com/VOTRE_USERNAME/jee_project_controle.git
+
+# Renommer la branche principale en 'main' (si nécessaire)
+git branch -M main
+
+# Pousser le code
+git push -u origin main
+```
+
+### Si vous utilisez SSH
+
+```bash
+git remote add origin git@github.com:VOTRE_USERNAME/jee_project_controle.git
+git push -u origin main
+```
+
 ## 📜 Licence
 
 Projet académique - JEE 2025
