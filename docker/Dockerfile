@@ -16,7 +16,8 @@ RUN mvn clean package -DskipTests -B -q
 # ============================================================
 # Stage 2: Image WildFly avec MySQL et l'application
 # ============================================================
-FROM quay.io/wildfly/wildfly:26.0.1.Final-jdk11
+# Image WildFly JDK 11 (tag fixe supprimé sur Quay, utiliser le tag flottant)
+FROM quay.io/wildfly/wildfly:latest-jdk11
 
 USER root
 
