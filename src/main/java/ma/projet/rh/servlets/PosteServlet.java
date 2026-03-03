@@ -162,7 +162,7 @@ public class PosteServlet extends HttpServlet {
             Long id = Long.parseLong(idParam);
             Optional<Poste> posteOpt = posteRepository.findById(id);
 
-            if (posteOpt.isEmpty()) {
+            if (!posteOpt.isPresent()) {
                 response.sendError(HttpServletResponse.SC_NOT_FOUND, "Poste non trouvé");
                 return;
             }

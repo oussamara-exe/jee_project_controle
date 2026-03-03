@@ -166,7 +166,7 @@ public class DepartementServlet extends HttpServlet {
             Long id = Long.parseLong(idParam);
             Optional<Departement> deptOpt = departementRepository.findByIdWithRelations(id);
 
-            if (deptOpt.isEmpty()) {
+            if (!deptOpt.isPresent()) {
                 response.sendError(HttpServletResponse.SC_NOT_FOUND, "Département non trouvé");
                 return;
             }

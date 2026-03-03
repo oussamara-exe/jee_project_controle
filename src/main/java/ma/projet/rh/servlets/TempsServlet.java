@@ -141,7 +141,7 @@ public class TempsServlet extends HttpServlet {
 
         // Récupérer l'employé (qui est le manager)
         Optional<Employe> managerOpt = employeRepository.findByIdWithRelations(currentUser.getEmployeId());
-        if (managerOpt.isEmpty()) {
+        if (!managerOpt.isPresent()) {
             response.sendError(HttpServletResponse.SC_NOT_FOUND, "Employé non trouvé");
             return;
         }
@@ -165,7 +165,7 @@ public class TempsServlet extends HttpServlet {
             }
 
             Optional<Employe> employeOpt = employeRepository.findByIdWithRelations(currentUser.getEmployeId());
-            if (employeOpt.isEmpty()) {
+            if (!employeOpt.isPresent()) {
                 response.sendError(HttpServletResponse.SC_NOT_FOUND, "Employé non trouvé");
                 return;
             }
@@ -234,7 +234,7 @@ public class TempsServlet extends HttpServlet {
             Long id = Long.parseLong(idParam);
             String commentaire = request.getParameter("commentaire");
             Optional<UserAccount> validateurOpt = userAccountRepository.findById(currentUser.getId());
-            if (validateurOpt.isEmpty()) {
+            if (!validateurOpt.isPresent()) {
                 response.sendError(HttpServletResponse.SC_NOT_FOUND, "Validateur non trouvé");
                 return;
             }
@@ -269,7 +269,7 @@ public class TempsServlet extends HttpServlet {
         try {
             Long id = Long.parseLong(idParam);
             Optional<UserAccount> validateurOpt = userAccountRepository.findById(currentUser.getId());
-            if (validateurOpt.isEmpty()) {
+            if (!validateurOpt.isPresent()) {
                 response.sendError(HttpServletResponse.SC_NOT_FOUND, "Validateur non trouvé");
                 return;
             }

@@ -71,7 +71,7 @@ public class FichePaieService {
 
         // Récupérer l'employé
         Optional<Employe> employeOpt = employeRepository.findByIdWithRelations(employeId);
-        if (employeOpt.isEmpty()) {
+        if (!employeOpt.isPresent()) {
             throw new IllegalArgumentException("Employé non trouvé");
         }
 
@@ -282,7 +282,7 @@ public class FichePaieService {
         logger.info("Validation de la fiche de paie: {} par {}", ficheId, validateur.getUsername());
 
         Optional<FichePaie> ficheOpt = fichePaieRepository.findByIdWithRelations(ficheId);
-        if (ficheOpt.isEmpty()) {
+        if (!ficheOpt.isPresent()) {
             throw new IllegalArgumentException("Fiche de paie non trouvée");
         }
 
@@ -318,7 +318,7 @@ public class FichePaieService {
         logger.info("Marquage de la fiche de paie comme payée: {}", ficheId);
 
         Optional<FichePaie> ficheOpt = fichePaieRepository.findByIdWithRelations(ficheId);
-        if (ficheOpt.isEmpty()) {
+        if (!ficheOpt.isPresent()) {
             throw new IllegalArgumentException("Fiche de paie non trouvée");
         }
 

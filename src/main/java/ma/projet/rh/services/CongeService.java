@@ -278,7 +278,7 @@ public class CongeService {
     public void initialiserSoldeConge(Employe employe, int annee) {
         Optional<SoldeConge> existant = soldeCongeRepository.findByEmployeAnnee(employe.getId(), annee);
         
-        if (existant.isEmpty()) {
+        if (!existant.isPresent()) {
             SoldeConge solde = new SoldeConge(employe, annee, JOURS_CONGES_ANNUELS);
             soldeCongeRepository.save(solde);
             logger.info("Solde de congés initialisé pour l'employé {} année {}", employe.getId(), annee);

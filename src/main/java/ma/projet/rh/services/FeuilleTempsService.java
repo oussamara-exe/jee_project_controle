@@ -92,7 +92,7 @@ public class FeuilleTempsService {
         logger.info("Soumission de la feuille de temps: {}", feuilleTempsId);
 
         Optional<FeuilleTemps> feuilleOpt = feuilleTempsRepository.findById(feuilleTempsId);
-        if (feuilleOpt.isEmpty()) {
+        if (!feuilleOpt.isPresent()) {
             throw new IllegalArgumentException("Feuille de temps non trouvée");
         }
 
@@ -130,7 +130,7 @@ public class FeuilleTempsService {
         logger.info("Validation de la feuille de temps: {} par {}", feuilleTempsId, validateur.getUsername());
 
         Optional<FeuilleTemps> feuilleOpt = feuilleTempsRepository.findByIdWithRelations(feuilleTempsId);
-        if (feuilleOpt.isEmpty()) {
+        if (!feuilleOpt.isPresent()) {
             throw new IllegalArgumentException("Feuille de temps non trouvée");
         }
 
@@ -166,7 +166,7 @@ public class FeuilleTempsService {
         logger.info("Rejet de la feuille de temps: {} par {}", feuilleTempsId, validateur.getUsername());
 
         Optional<FeuilleTemps> feuilleOpt = feuilleTempsRepository.findByIdWithRelations(feuilleTempsId);
-        if (feuilleOpt.isEmpty()) {
+        if (!feuilleOpt.isPresent()) {
             throw new IllegalArgumentException("Feuille de temps non trouvée");
         }
 
@@ -295,7 +295,7 @@ public class FeuilleTempsService {
      */
     public void delete(Long id) {
         Optional<FeuilleTemps> feuilleOpt = feuilleTempsRepository.findById(id);
-        if (feuilleOpt.isEmpty()) {
+        if (!feuilleOpt.isPresent()) {
             throw new IllegalArgumentException("Feuille de temps non trouvée");
         }
 

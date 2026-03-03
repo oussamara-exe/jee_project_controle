@@ -214,7 +214,7 @@ public class PaieServlet extends HttpServlet {
         try {
             Long id = Long.parseLong(idParam);
             Optional<UserAccount> validateurOpt = userAccountRepository.findById(currentUser.getId());
-            if (validateurOpt.isEmpty()) {
+            if (!validateurOpt.isPresent()) {
                 response.sendError(HttpServletResponse.SC_NOT_FOUND, "Validateur non trouvé");
                 return;
             }

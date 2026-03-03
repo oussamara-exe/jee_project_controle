@@ -271,7 +271,7 @@ public class EmployeServlet extends HttpServlet {
             Long id = Long.parseLong(idParam);
             Optional<Employe> existingOpt = employeService.findByIdWithRelations(id);
 
-            if (existingOpt.isEmpty()) {
+            if (!existingOpt.isPresent()) {
                 response.sendError(HttpServletResponse.SC_NOT_FOUND, "Employé non trouvé");
                 return;
             }

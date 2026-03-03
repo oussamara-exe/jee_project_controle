@@ -38,7 +38,7 @@ public class AuthenticationService {
 
         Optional<UserAccount> userOpt = userAccountRepository.findByUsername(username);
 
-        if (userOpt.isEmpty()) {
+        if (!userOpt.isPresent()) {
             logger.warn("Utilisateur non trouvé: {}", username);
             return Optional.empty();
         }
@@ -121,7 +121,7 @@ public class AuthenticationService {
 
         Optional<UserAccount> userOpt = userAccountRepository.findById(userId);
         
-        if (userOpt.isEmpty()) {
+        if (!userOpt.isPresent()) {
             return false;
         }
 
@@ -164,7 +164,7 @@ public class AuthenticationService {
 
         Optional<UserAccount> userOpt = userAccountRepository.findById(userId);
         
-        if (userOpt.isEmpty()) {
+        if (!userOpt.isPresent()) {
             throw new IllegalArgumentException("Utilisateur non trouvé");
         }
 

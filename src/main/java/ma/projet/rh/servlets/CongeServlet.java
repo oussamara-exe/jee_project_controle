@@ -209,7 +209,7 @@ public class CongeServlet extends HttpServlet {
             }
 
             Optional<Employe> employeOpt = employeService.findByIdWithRelations(currentUser.getEmployeId());
-            if (employeOpt.isEmpty()) {
+            if (!employeOpt.isPresent()) {
                 response.sendError(HttpServletResponse.SC_FORBIDDEN, "Employé non trouvé");
                 return;
             }
@@ -319,7 +319,7 @@ public class CongeServlet extends HttpServlet {
             Long id = Long.parseLong(idParam);
             // Récupérer le UserAccount pour la validation
             Optional<ma.projet.rh.entities.UserAccount> userAccountOpt = userAccountRepository.findById(currentUser.getId());
-            if (userAccountOpt.isEmpty()) {
+            if (!userAccountOpt.isPresent()) {
                 response.sendError(HttpServletResponse.SC_FORBIDDEN, "Utilisateur non trouvé");
                 return;
             }
@@ -372,7 +372,7 @@ public class CongeServlet extends HttpServlet {
             Long id = Long.parseLong(idParam);
             // Récupérer le UserAccount pour le refus
             Optional<ma.projet.rh.entities.UserAccount> userAccountOpt = userAccountRepository.findById(currentUser.getId());
-            if (userAccountOpt.isEmpty()) {
+            if (!userAccountOpt.isPresent()) {
                 response.sendError(HttpServletResponse.SC_FORBIDDEN, "Utilisateur non trouvé");
                 return;
             }
