@@ -187,6 +187,46 @@ Ouvrez votre navigateur et accédez à :
 http://localhost:8080/gestion-rh
 ```
 
+## 🐳 DevOps : Docker et CI/CD
+
+Solution **gratuite** avec Docker et GitHub Actions.
+
+### Docker Compose (tout-en-un)
+
+```bash
+# Démarrer l'application + MySQL
+docker compose up -d
+
+# Accès : http://localhost:8080/gestion-rh
+# Arrêter
+docker compose down
+```
+
+- **MySQL** : port 3306, base `gestion_rh`, utilisateur `rh_user` / `rh_password_2024`
+- **App** : WildFly sur 8080, datasource configurée automatiquement au démarrage
+- Les scripts dans `docker/mysql/init/` créent le schéma et les données de démo au premier lancement
+
+### Build image seule
+
+```bash
+docker build -t gestion-rh-app:latest -f docker/Dockerfile .
+```
+
+### CI/CD (GitHub Actions)
+
+- **À chaque push/PR** : build Maven, tests, package WAR
+- **Sur push sur `main`** : build de l’image Docker et push vers **GitHub Container Registry** (ghcr.io)
+- **Sur PR** : vérification que l’image Docker se build correctement
+
+Pour utiliser l’image publiée :
+
+```bash
+docker pull ghcr.io/VOTRE_USERNAME/gestion-rh:latest
+# puis lancer avec une base MySQL (variables MYSQL_*)
+```
+
+Voir [.github/workflows/ci-cd.yml](.github/workflows/ci-cd.yml) pour le détail du pipeline.
+
 ## 🔐 Comptes de Démonstration
 
 | Username    | Mot de passe | Rôle    | Description                      |

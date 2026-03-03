@@ -80,6 +80,9 @@ standalone/log/
 standalone/tmp/
 *.cli
 *.sh
+# Exceptions pour scripts DevOps (à versionner)
+!docker/entrypoint.sh
+!scripts/test-devops.sh
 
 # Scripts de déploiement locaux
 compile_et_deployer.sh

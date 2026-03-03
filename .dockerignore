@@ -1,0 +1,39 @@
+# Git
+.git
+.gitignore
+.github
+
+# Build output (on host; we build in Docker)
+target/
+
+# IDE
+.idea
+.vscode
+*.iml
+*.ipr
+*.iws
+.classpath
+.project
+.settings
+
+# Docs / rapport (non nécessaires dans l'image)
+rapport/
+*.md
+!README.md
+
+# Logs, temp, uploads
+logs/
+temp/
+uploads/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Scripts locaux
+PUSH_GITHUB.md
+setup_database.sql
+
+# Tests (optionnel : on peut les exclure pour une image plus légère)
+# Les tests sont exécutés en CI, pas dans l'image finale

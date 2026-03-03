@@ -1,0 +1,54 @@
+# Docker Compose - Gestion RH Avancée
+# Usage: docker compose up -d
+# App: http://localhost:8080/gestion-rh
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: gestion-rh-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: gestion_rh
+      MYSQL_USER: rh_user
+      MYSQL_PASSWORD: rh_password_2024
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./docker/mysql/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 15s
+    networks:
+      - gestion-rh-net
+
+  app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    image: gestion-rh-app:latest
+    container_name: gestion-rh-app
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_PORT: "3306"
+      MYSQL_DATABASE: gestion_rh
+      MYSQL_USER: rh_user
+      MYSQL_PASSWORD: rh_password_2024
+    ports:
+      - "8080:8080"
+      - "9990:9990"
+    networks:
+      - gestion-rh-net
+
+volumes:
+  mysql_data:
+
+networks:
+  gestion-rh-net:
+    driver: bridge

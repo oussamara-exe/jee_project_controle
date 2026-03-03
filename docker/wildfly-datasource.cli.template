@@ -1,0 +1,5 @@
+# Ajout de la datasource GestionRHDS (variables remplacées par entrypoint)
+# Utilisé avec: jboss-cli.sh --connect --file=...
+# Le driver MySQL est déjà installé dans l'image.
+
+data-source add --jndi-name=java:jboss/datasources/GestionRHDS --name=GestionRHDS --connection-url=jdbc:mysql://__MYSQL_HOST__:__MYSQL_PORT__/__MYSQL_DATABASE__?useSSL=false\&allowPublicKeyRetrieval=true\&serverTimezone=UTC\&characterEncoding=UTF-8 --driver-name=mysql --user-name=__MYSQL_USER__ --password=__MYSQL_PASSWORD__ --min-pool-size=5 --max-pool-size=20 --enabled=true
